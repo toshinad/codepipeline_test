@@ -2,10 +2,9 @@
 
 set -e
 
-ENVIRONMENT=$DEPLOYMENT_GROUP_NAME
+. ./infra/codedeploy/env.sh
 
-BASE=/opt/codepipeline-test
-cd $BASE
+cd $DEPLOY
 
 if [ -e ./infra/codedeploy/$ENVIRONMENT/afterInstall.sh ]
 then
