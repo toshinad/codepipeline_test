@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /opt/codepipeline-test
+    destination: /opt/codepipeline-test/$DEPLOYMENT_GROUP_NAME
 hooks:
   AfterInstall:
     - location: infra/codedeploy/afterInstall.sh
