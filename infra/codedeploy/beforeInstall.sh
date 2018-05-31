@@ -2,10 +2,10 @@
 
 set -e
 
-ENVIRONMENT=$DEPLOYMENT_GROUP_NAME
+echo `pwd`
+. /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/infra/codedeploy/env.sh
 
-BASE=/opt/codepipeline-test
-cd $BASE
+cd $DEPLOY
 
 if [ -e ./infra/codedeploy/$ENVIRONMENT/beforeInstall.sh ]
 then

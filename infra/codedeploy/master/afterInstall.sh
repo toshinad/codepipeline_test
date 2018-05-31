@@ -2,9 +2,7 @@
 
 ENVIRONMENT=$DEPLOYMENT_GROUP_NAME
 
-BASE=/opt/codepipeline-test
-DEPLOY=$BASE-$ENVIRONMENT
-CURRENT=$BASE-$ENVIRONMENT.`date '+%Y%m%d%H%M%S'`
+. ./infra/codedeploy/env.sh
 
 cd $BASE/..
 mv $BASE $CURRENT
