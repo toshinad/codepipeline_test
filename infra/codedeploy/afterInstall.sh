@@ -5,7 +5,12 @@ set -e
 echo `pwd`
 . /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/infra/codedeploy/env.sh
 
-cd $DEPLOY
+if [ -e $DEPLOY ]
+then
+  cd $DEPLOY
+else
+  cd $BASE
+fi
 
 if [ -e ./infra/codedeploy/$ENVIRONMENT/afterInstall.sh ]
 then
