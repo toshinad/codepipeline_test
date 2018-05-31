@@ -4,6 +4,10 @@ files:
   - source: /
     destination: /opt/codepipeline-test
 hooks:
+  BeforeInstall:
+    - location: infra/codedeploy/beforeInstall.sh
+      timeout: 300
+      runas: root
   AfterInstall:
     - location: infra/codedeploy/afterInstall.sh
       timeout: 300
