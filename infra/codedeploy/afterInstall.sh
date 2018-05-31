@@ -2,8 +2,16 @@
 
 set -e
 
-echo `pwd`
-. /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/infra/codedeploy/env.sh
+export ENVIRONMENT=$DEPLOYMENT_GROUP_NAME
+export BASE=/opt/codepipeline-test
+export DEPLOY=$BASE-$ENVIRONMENT
+export CURRENT=$BASE-$ENVIRONMENT-`date '+%Y%m%d%H%M%S'`
+
+cd $BASE/..
+
+mv $BASE $CURRENT
+ln -nfs $CURRENT $DEPLOY
+ln -nfs $CURRENT $BASE
 
 cd $DEPLOY
 
