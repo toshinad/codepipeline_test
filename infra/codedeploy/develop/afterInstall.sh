@@ -1,10 +1,5 @@
 #!/bin/bash
 
-. ./infra/codedeploy/env.sh
-
-cd $BASE/..
-mv $BASE $CURRENT
-ln -nfs $CURRENT $DEPLOY
-ln -nfs $CURRENT $BASE
+ENVIRONMENT=$DEPLOYMENT_GROUP_NAME
 
 echo "$ENVIRONMENT afterInstall" >> /tmp/result.txt

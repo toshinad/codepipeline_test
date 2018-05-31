@@ -2,16 +2,17 @@
 
 set -e
 
-echo `pwd`
-. /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/infra/codedeploy/env.sh
+ENVIRONMENT=$DEPLOYMENT_GROUP_NAME
 
-if [ -d $DEPLOY ]
+export ENVIRONMENT=$DEPLOYMENT_GROUP_NAME
+export BASE=/opt/app/instagram-admin
+export DEPLOY=$BASE-$ENVIRONMENT
+export CURRENT=$BASE-$ENVIRONMENT-`date '+%Y%m%d%H%M%S'`
+
+cd $DEPLOY
+
+if [ -e ./infra/codedeploy/$ENVIRONMENT/applicationStart.sh ]
 then
-  cd $DEPLOY
-
-  if [ -e ./infra/codedeploy/$ENVIRONMENT/applicationStart.sh ]
-  then
-    chmod +x ./infra/codedeploy/$ENVIRONMENT/applicationStop.sh
-    ./infra/codedeploy/$ENVIRONMENT/applicationStop.sh
-  fi
+  chmod +x ./infra/codedeploy/$ENVIRONMENT/applicationStop.sh
+  ./infra/codedeploy/$ENVIRONMENT/applicationStop.sh
 fi
