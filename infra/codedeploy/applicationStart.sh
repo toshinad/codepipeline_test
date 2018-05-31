@@ -2,6 +2,7 @@
 
 set -e
 
+echo `pwd`
 . ./infra/codedeploy/env.sh
 
 cd $DEPLOY
