@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/codepipeline-test
+hooks:
+  AfterInstall:
+    - location: infra/codedeploy/afterInstall.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: infra/codedeploy/applicationStart.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: infra/codedeploy/applicationStop.sh
+      timeout: 300
+      runas: root
