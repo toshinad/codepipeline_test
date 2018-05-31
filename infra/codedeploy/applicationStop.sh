@@ -3,7 +3,7 @@
 set -e
 
 echo `pwd`
-. ./infra/codedeploy/env.sh
+. /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/infra/codedeploy/env.sh
 
 cd $DEPLOY
 
